@@ -3,7 +3,7 @@
 /* eslint-disable prettier/prettier */
 import { configureStore } from '@reduxjs/toolkit';
 import libroReducer from '../features/LibrosSlice';
-import registroReducer from '../features/RegistroSlice';
+import registroReducer from '../features/RegistrosSlice';
 import DetallesReducer from '../features/DetallesSlice';
 
 export const store = configureStore({

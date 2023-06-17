@@ -115,7 +115,7 @@ class LibroCard extends PureComponent<LibroCardProps> {
             <Text style={styles.notificationMessage}>Nombre: {this.props.nombre}</Text>
             <Text style={styles.notificationMessage}>Tipo: {this.props.tipo}</Text>
             <Text style={styles.notificationMessage}>Autor: {this.props.autor}</Text>
-            <Text style={styles.notificationMessage}>Fecha de publicación: {this.props.fechaPublicacion}</Text>
+            <Text style={styles.notificationMessage}>Fecha de publicación: {this.props.fechaPublicacion.toString().split(' ').slice(0, 4).join(' ')}</Text>
             <Text style={styles.notificationMessage}>Cantidad: {this.props.cantidad}</Text>
 
             <View style={styles.buttonContainer}>
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
       fontSize: 16,
     },
     title: {
-      color: '#382476',
+      color: 'black',
       fontSize: 24,
       textAlign: 'center',
       marginTop: 16,
@@ -247,10 +247,10 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       paddingLeft: 10,
       paddingRight: 10,
-      marginLeft: 50,
+      marginLeft: 130,
       paddingVertical: 12,
       flexDirection: 'row',
-      backgroundColor: '#382476',
+      backgroundColor: 'rgba(255, 140, 0, 0.7)',
       borderRadius: 4,
       elevation: 3,
     },

@@ -16,13 +16,14 @@ const LandingScreen: FC = () => {
     <NavigationContainer>
       <Tab.Navigator
         activeColor="white"
-        barStyle={{backgroundColor: '#382476'}}
+        barStyle={{backgroundColor: 'rgba(255, 140, 0, 0.7)'}}
         initialRouteName={initialRoute}>
+
         <Tab.Screen
           name="HomeScreen"
           component={HomeScreen}
           options={{
-            tabBarLabel: 'Inicio',
+            tabBarLabel: 'Libros',
             tabBarIcon: ({color}) => (
               <MaterialCommunityIcons name="variable" color={color} size={20} />
             ),
