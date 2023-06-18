@@ -9,6 +9,7 @@ interface UsuariosSliceInitialState {
     idLibro: number;
 
     responseGetLibroDetalle: number | null;
+    responseGetUsuarios: number | null;
 }
 
 const initialState: UsuariosSliceInitialState = {
@@ -17,6 +18,7 @@ const initialState: UsuariosSliceInitialState = {
     idLibro: 0,
 
     responseGetLibroDetalle: null,
+    responseGetUsuarios: null,
 };
 
 const usuariosSlice = createSlice({
@@ -32,6 +34,9 @@ const usuariosSlice = createSlice({
         setResponseGetLibroDetalle: (state, action: PayloadAction<number | null>) => {
             state.responseGetLibroDetalle = action.payload;
         },
+        setResponseGetUsuarios: (state, action: PayloadAction<number | null>) => {
+            state.responseGetUsuarios = action.payload;
+        }
     },
     extraReducers: builder => {
         builder.addCase(deleteIdLibro.fulfilled, (state, action) => {
@@ -41,6 +46,15 @@ const usuariosSlice = createSlice({
         });
         builder.addCase(deleteIdLibro.rejected, (state) => {
             state.responseGetLibroDetalle = 400;
+        });
+
+        builder.addCase(getUsuarios.fulfilled, (state, action) => {
+            state.responseGetUsuarios = action.payload.intStatus;
+            state.usuario = [...state.usuario = action.payload.strAnswer];
+            console.log('action.payload.intStatus', action.payload.intStatus);
+        });
+        builder.addCase(getUsuarios.rejected, (state) => {
+            state.responseGetUsuarios = 400;
         });
     },
 });
@@ -57,7 +71,7 @@ const deleteIdLibro = createAsyncThunk(
 const getUsuarios = createAsyncThunk(
     'usuariosSlice/getUsuarios',
     async () => {
-        const response = await Api.get<Response<Libro[]>>('/getUsuarios');
+        const response = await Api.get<Response<Usuario[]>>('/getUsuarios');
         console.log(response.data);
         return response.data;
     }
@@ -66,7 +80,8 @@ const getUsuarios = createAsyncThunk(
 export const {
     clearLibroDetalleReducer,
     setIdLibroDelete,
-    setResponseGetLibroDetalle
+    setResponseGetLibroDetalle,
+    setResponseGetUsuarios
 } = usuariosSlice.actions;
 
 export {

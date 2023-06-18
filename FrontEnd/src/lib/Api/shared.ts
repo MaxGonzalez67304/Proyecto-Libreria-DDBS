@@ -4,6 +4,10 @@ export const obtenerRegistros = () => {
   return Api.get<Response<{}>>('/getLibros');
 };
 
+export const obtenerUsuarios = () => {
+  return Api.get<Response<{}>>('/getUsuarios');
+};
+
 export const deleteLibros = (idLibro: number) => {
   return Api.get<Response<{}>>(`deleteLibro/${idLibro}`);
 };

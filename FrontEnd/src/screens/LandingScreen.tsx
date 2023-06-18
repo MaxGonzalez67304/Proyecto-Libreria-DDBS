@@ -18,25 +18,13 @@ const LandingScreen: FC = () => {
         activeColor="white"
         barStyle={{backgroundColor: 'rgba(255, 140, 0, 0.7)'}}
         initialRouteName={initialRoute}>
-
         <Tab.Screen
           name="HomeScreen"
           component={HomeScreen}
           options={{
             tabBarLabel: 'Libros',
             tabBarIcon: ({color}) => (
-              <MaterialCommunityIcons name="variable" color={color} size={20} />
-            ),
-          }}
-        />
-
-        <Tab.Screen
-          name="UsuariosScreen"
-          component={UsuariosScreen}
-          options={{
-            tabBarLabel: 'Usuarios',
-            tabBarIcon: ({color}) => (
-              <MaterialCommunityIcons name="camera" color={color} size={20} />
+              <MaterialCommunityIcons name="swim" color={color} size={20} />
             ),
           }}
         />
@@ -47,7 +35,18 @@ const LandingScreen: FC = () => {
           options={{
             tabBarLabel: 'Sucursales',
             tabBarIcon: ({color}) => (
-              <MaterialCommunityIcons name="bookmark" color={color} size={20} />
+              <MaterialCommunityIcons name="sitemap" color={color} size={20} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="UsuariosScreen"
+          component={UsuariosScreen}
+          options={{
+            tabBarLabel: 'Usuarios',
+            tabBarIcon: ({color}) => (
+              <MaterialCommunityIcons name="run" color={color} size={20} />
             ),
           }}
         />
@@ -58,7 +57,7 @@ const LandingScreen: FC = () => {
           options={{
             tabBarLabel: 'Registro',
             tabBarIcon: ({color}) => (
-              <MaterialCommunityIcons name="star" color={color} size={20} />
+              <MaterialCommunityIcons name="bookmark" color={color} size={20} />
             ),
           }}
         />

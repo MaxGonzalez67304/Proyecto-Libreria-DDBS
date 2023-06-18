@@ -6,7 +6,7 @@ const PromocionesScreen: FC = () => {
     const navigation = useNavigation();
     return (
         <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Promociones</Text>
+        <Text style={styles.title}>Sucursales</Text>
         <Button
             title="Ir a Home"
             onPress={() => navigation.dispatch(StackActions.popToTop())}
