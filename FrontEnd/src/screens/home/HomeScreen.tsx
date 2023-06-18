@@ -7,12 +7,12 @@ import {
   View,
   DevSettings,
 } from 'react-native';
-import React, {FC, PureComponent, useEffect} from 'react';
-import {Libro} from '../../lib/models/libro';
-import {useAppDispatch, useAppSelector} from '../../redux/app/hooks';
-import {useNavigation} from '@react-navigation/native';
-import {getLibro, setResponseGetLibro} from '../../redux/features/LibrosSlice';
-import {setIdLibroDelete} from '../../redux/features/UsuariosSlice';
+import React, { FC, PureComponent, useEffect } from 'react';
+import { Libro } from '../../lib/models/libro';
+import { useAppDispatch, useAppSelector } from '../../redux/app/hooks';
+import { useNavigation } from '@react-navigation/native';
+import { getLibro, setResponseGetLibro } from '../../redux/features/LibrosSlice';
+import { setIdLibroDelete } from '../../redux/features/UsuariosSlice';
 
 const HomeScreen: FC = () => {
   const librosReducer = useAppSelector(state => state.libro);
@@ -28,7 +28,7 @@ const HomeScreen: FC = () => {
   }, []);
 
   const detalleHandler = async (idLibro: number) => {
-    dispatch(setIdLibroDelete({idLibro: idLibro}));
+    dispatch(setIdLibroDelete({ idLibro: idLibro }));
     navigation.navigate('UsuariosScreen');
     DevSettings.reload();
   };
@@ -47,7 +47,7 @@ const HomeScreen: FC = () => {
     }
   }, [librosReducer.responseGetLibro]);
 
-  const renderItem = ({item}: {item: Libro}) => {
+  const renderItem = ({ item }: { item: Libro }) => {
     return (
       <LibroCard
         idLibro={item.idLibro}
@@ -57,14 +57,11 @@ const HomeScreen: FC = () => {
         autor={item.autor}
         fechaPublicacion={item.fechaPublicacion}
         cantidad={item.cantidad}
-        getNavigation={getNavigationRegistro}
         getNavigationUsuario={getNavigationUsuario}
         detalleHandler={detalleHandler}
       />
     );
   };
-
-  const getNavigationRegistro = () => navigation.navigate('RegistrosScreen');
 
   const getNavigationUsuario = () => navigation.navigate('UsuariosScreen');
 
@@ -145,7 +142,6 @@ interface LibroCardProps {
   autor: string;
   fechaPublicacion: Date;
   cantidad: number;
-  getNavigation: () => void;
   getNavigationUsuario: () => void;
   detalleHandler: (idLibro: number) => void;
 }

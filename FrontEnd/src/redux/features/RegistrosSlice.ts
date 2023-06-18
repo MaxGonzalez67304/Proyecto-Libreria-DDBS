@@ -1,6 +1,6 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Usuario} from '../../lib/models/usuario';
-import {Api, Response} from '../../lib/Api/Api';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Usuario } from '../../lib/models/usuario';
+import { Api, Response } from '../../lib/Api/Api';
 
 interface RegistroSliceInitialState {
   registro: Usuario;
@@ -67,9 +67,9 @@ const postRegistro = createAsyncThunk(
   },
 );
 
-export const {clearRegistroReducer, setResponseGetRegistro} =
+export const { clearRegistroReducer, setResponseGetRegistro } =
   registroSlice.actions;
 
-export {postRegistro};
+export { postRegistro };
 
 export default registroSlice.reducer;

@@ -1,4 +1,4 @@
-import {default as axios} from 'axios';
+import { default as axios } from 'axios';
 
 const protocol = 'http';
 const domainName = '192.168.100.104';

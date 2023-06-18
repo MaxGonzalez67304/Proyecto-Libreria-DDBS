@@ -1,6 +1,6 @@
-import {FC} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import { FC } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreen from '../screens/home/HomeScreen';
 import RegistrosScreen from '../screens/registros/RegistrosScreen';
@@ -16,14 +16,15 @@ const LandingScreen: FC = () => {
     <NavigationContainer>
       <Tab.Navigator
         activeColor="white"
-        barStyle={{backgroundColor: 'rgba(255, 140, 0, 0.7)'}}
+        barStyle={{ backgroundColor: 'rgba(255, 140, 0, 0.7)' }}
         initialRouteName={initialRoute}>
+
         <Tab.Screen
           name="HomeScreen"
           component={HomeScreen}
           options={{
             tabBarLabel: 'Libros',
-            tabBarIcon: ({color}) => (
+            tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="swim" color={color} size={20} />
             ),
           }}
@@ -34,7 +35,7 @@ const LandingScreen: FC = () => {
           component={SucursalesScreen}
           options={{
             tabBarLabel: 'Sucursales',
-            tabBarIcon: ({color}) => (
+            tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="sitemap" color={color} size={20} />
             ),
           }}
@@ -45,7 +46,7 @@ const LandingScreen: FC = () => {
           component={UsuariosScreen}
           options={{
             tabBarLabel: 'Usuarios',
-            tabBarIcon: ({color}) => (
+            tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="run" color={color} size={20} />
             ),
           }}
@@ -56,7 +57,7 @@ const LandingScreen: FC = () => {
           component={RegistrosScreen}
           options={{
             tabBarLabel: 'Registro',
-            tabBarIcon: ({color}) => (
+            tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="bookmark" color={color} size={20} />
             ),
           }}

@@ -1,7 +1,7 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Libro} from '../../lib/models/libro';
-import {Usuario} from '../../lib/models/usuario';
-import {Api, Response} from '../../lib/Api/Api';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Libro } from '../../lib/models/libro';
+import { Usuario } from '../../lib/models/usuario';
+import { Api, Response } from '../../lib/Api/Api';
 
 interface UsuariosSliceInitialState {
   detalleLibro: Libro | null;
@@ -26,7 +26,7 @@ const usuariosSlice = createSlice({
   initialState,
   reducers: {
     clearLibroDetalleReducer: state => initialState,
-    setIdLibroDelete: (state, action: PayloadAction<{idLibro: number}>) => {
+    setIdLibroDelete: (state, action: PayloadAction<{ idLibro: number }>) => {
       const idLibro = action.payload.idLibro;
       state.idLibro = idLibro;
       console.log('idLibro', idLibro);
@@ -84,6 +84,6 @@ export const {
   setResponseGetUsuarios,
 } = usuariosSlice.actions;
 
-export {deleteIdLibro, getUsuarios};
+export { deleteIdLibro, getUsuarios };
 
 export default usuariosSlice.reducer;

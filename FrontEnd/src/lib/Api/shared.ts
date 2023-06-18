@@ -1,4 +1,4 @@
-import {Api, Response} from './Api';
+import { Api, Response } from './Api';
 
 export const obtenerRegistros = () => {
   return Api.get<Response<{}>>('/getLibros');
@@ -6,6 +6,10 @@ export const obtenerRegistros = () => {
 
 export const obtenerUsuarios = () => {
   return Api.get<Response<{}>>('/getUsuarios');
+};
+
+export const obtenerSucursales = () => {
+  return Api.get<Response<{}>>('/getSucursales');
 };
 
 export const deleteLibros = (idLibro: number) => {

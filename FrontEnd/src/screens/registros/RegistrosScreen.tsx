@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Alert,
   DevSettings,
@@ -8,9 +8,9 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import {useAppDispatch, useAppSelector} from '../../redux/app/hooks';
-import {postRegistro} from '../../redux/features/RegistrosSlice';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { useAppDispatch } from '../../redux/app/hooks';
+import { postRegistro } from '../../redux/features/RegistrosSlice';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import DatePicker from 'react-native-date-picker';
 
 const RegistrosScreen = () => {

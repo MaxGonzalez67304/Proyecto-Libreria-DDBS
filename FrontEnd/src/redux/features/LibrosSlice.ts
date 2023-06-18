@@ -1,6 +1,6 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Libro} from '../../lib/models/libro';
-import {Api, Response} from '../../lib/Api/Api';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Libro } from '../../lib/models/libro';
+import { Api, Response } from '../../lib/Api/Api';
 
 interface LibrosSliceInitialState {
   libro: Libro[];
@@ -41,8 +41,8 @@ const getLibro = createAsyncThunk('librosSlice/getLibros', async () => {
   return response.data;
 });
 
-export const {clearLibroReducer, setResponseGetLibro} = librosSlice.actions;
+export const { clearLibroReducer, setResponseGetLibro } = librosSlice.actions;
 
-export {getLibro};
+export { getLibro };
 
 export default librosSlice.reducer;

@@ -1,18 +1,16 @@
-import {FlatList, SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import React, {FC, PureComponent, useEffect} from 'react';
+import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import React, { FC, PureComponent, useEffect } from 'react';
 import {
   deleteIdLibro,
   getUsuarios,
   setResponseGetLibroDetalle,
 } from '../../redux/features/UsuariosSlice';
-import {useAppDispatch, useAppSelector} from '../../redux/app/hooks';
-import {useNavigation} from '@react-navigation/native';
-import {Usuario} from '../../lib/models/usuario';
+import { useAppDispatch, useAppSelector } from '../../redux/app/hooks';
+import { Usuario } from '../../lib/models/usuario';
 
 const UsuariosScreen: FC = () => {
   const usuarioReducer = useAppSelector(state => state.usuarioReducer);
   const dispatch = useAppDispatch();
-  const navigation = useNavigation<any>();
 
   const fetchInitialHandler = () => {
     dispatch(getUsuarios());
@@ -20,7 +18,6 @@ const UsuariosScreen: FC = () => {
   };
 
   useEffect(() => {
-    //HACER LA PETICION
     fetchInitialHandler();
   }, []);
 
@@ -53,7 +50,7 @@ const UsuariosScreen: FC = () => {
     usuarioReducer.responseGetUsuarios,
   ]);
 
-  const renderItem = ({item}: {item: Usuario}) => {
+  const renderItem = ({ item }: { item: Usuario }) => {
     return (
       <UsuarioCard
         idUsuario={item.idUsuario}
@@ -64,15 +61,9 @@ const UsuariosScreen: FC = () => {
         celular={item.celular}
         nombreLibro={item.nombreLibro}
         tiempoRenta={item.tiempoRenta}
-        getNavigation={getNavigationRegistro}
-        getNavigationUsuario={getNavigationUsuario}
       />
     );
   };
-
-  const getNavigationRegistro = () => navigation.navigate('RegistrosScreen');
-
-  const getNavigationUsuario = () => navigation.navigate('UsuariosScreen');
 
   const renderSeparator = () => <FlatListCardSeparator />;
   const renderEmptyComponent = () => (
@@ -149,8 +140,6 @@ interface UsuarioCardProps {
   celular: string;
   nombreLibro: string;
   tiempoRenta: string;
-  getNavigation: () => void;
-  getNavigationUsuario: () => void;
 }
 
 const styles = StyleSheet.create({
