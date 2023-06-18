@@ -35,7 +35,7 @@ def getTest():
         HelperFunctions.PrintException()
         return jsonify(ResponseMessage.err500)
 
-# Obtener registros de la base de datos
+# Obtener informacion de la base de datos
 @app.route('/api/general/buscar', methods=['GET'])
 def fnGetMYSQLList():
     try:
@@ -46,7 +46,7 @@ def fnGetMYSQLList():
         HelperFunctions.PrintException()
         return jsonify(ResponseMessage.err500)
 
-# Eliminar registros de la base de datos
+# Eliminar informacion de la base de datos
 @app.route('/api/general/deleteLibro/<int:idLibro>', methods=['GET'])
 def deleteIdLibro(idLibro):
     try:
@@ -57,7 +57,7 @@ def deleteIdLibro(idLibro):
         HelperFunctions.PrintException()
         return jsonify(ResponseMessage.err500)
 
-# Agregar registros a la base de datos
+# Agregar informacion a la base de datos
 @app.route('/api/general/addUsuario', methods=['POST'])
 def addLibro():
     try:

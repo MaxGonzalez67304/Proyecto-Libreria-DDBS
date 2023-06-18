@@ -1,24 +1,19 @@
 import {Button, FlatList, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import React, {FC, PureComponent, useEffect} from 'react';
-import { getLibro, setResponseGetLibro } from '../../redux/features/LibrosSlice';
 import {
-  getIdLibro,
+  deleteIdLibro,
   setResponseGetLibroDetalle,
-} from '../../redux/features/DetallesSlice';
-import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import {Libro} from '../../lib/models/libro';
+} from '../../redux/features/UsuariosSlice';
 import {useAppDispatch, useAppSelector} from '../../redux/app/hooks';
-import {setIdLibroDetalle} from '../../redux/features/DetallesSlice';
-import { NavigationContainer, StackActions, useNavigation } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
 
-const DetallesScreen: FC = () => {
-  const detalleReducer = useAppSelector(state => state.detallesReducer); //SUSCRIBIR PARA RECIBIR DATOS DEL REDUX
-  //const {registro} = useAppSelector((state) => state.registro);
+const UsuariosScreen: FC = () => {
+  const usuarioReducer = useAppSelector(state => state.usuarioReducer);
   const dispatch = useAppDispatch();
   const navigation = useNavigation<any>();
 
   const fetchInitialHandler = () => {
-    dispatch(getIdLibro(detalleReducer.idLibro));
+    dispatch(deleteIdLibro(usuarioReducer.idLibro));
   };
 
   useEffect(() => {  //HACER LA PETICION
@@ -26,18 +21,18 @@ const DetallesScreen: FC = () => {
   }, []);
 
    useEffect(() => {
-    if (detalleReducer.responseGetLibroDetalle !== null) {
-      const tmp = detalleReducer.responseGetLibroDetalle;
-      console.log('tmp', detalleReducer);
+    if (usuarioReducer.responseGetLibroDetalle !== null) {
+      const tmp = usuarioReducer.responseGetLibroDetalle;
+      console.log('tmp', usuarioReducer);
       dispatch(setResponseGetLibroDetalle(null));
       if (tmp !== 200) {
         console.log(
           'Error',
-          'Ocurrió un error al tratar de obtener los vehiculos',
+          'Ocurrió un error al tratar de obtener los usuarios',
         );
       }
     }
-  }, [detalleReducer.responseGetLibroDetalle ]);
+  }, [usuarioReducer.responseGetLibroDetalle ]);
 
   const getNavigation = () => (
     navigation.navigate('HomeScreen')
@@ -45,7 +40,7 @@ const DetallesScreen: FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-    <Text style={styles.title}>Detalles</Text>
+    <Text style={styles.title}>Usuarios</Text>
     <Button
         title="PRUEBA"
         onPress={() => navigation.dispatch(StackActions.popToTop())}
@@ -67,5 +62,4 @@ const styles = StyleSheet.create({
     },
 });
 
-
-export default DetallesScreen;
+export default UsuariosScreen;

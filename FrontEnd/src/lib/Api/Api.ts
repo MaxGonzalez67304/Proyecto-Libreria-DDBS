@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { default as axios } from 'axios';
 
 const protocol = 'http';

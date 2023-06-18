@@ -3,9 +3,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreen from '../screens/home/HomeScreen';
-import DetallesScreen from './detalles/DetallesScreen';
 import RegistrosScreen from '../screens/registros/RegistrosScreen';
 import SucursalesScreen from './sucursales/SucursalesScreen';
+import UsuariosScreen from './usuarios/UsuariosScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -31,10 +31,10 @@ const LandingScreen: FC = () => {
         />
 
         <Tab.Screen
-          name="DetallesScreen"
-          component={DetallesScreen}
+          name="UsuariosScreen"
+          component={UsuariosScreen}
           options={{
-            tabBarLabel: 'Detalles',
+            tabBarLabel: 'Usuarios',
             tabBarIcon: ({color}) => (
               <MaterialCommunityIcons name="camera" color={color} size={20} />
             ),

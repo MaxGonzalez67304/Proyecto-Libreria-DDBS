@@ -1,10 +1,10 @@
-import {Button, FlatList, Pressable, SafeAreaView, StyleSheet, Text, View, Alert, DevSettings} from 'react-native';
+import {FlatList, Pressable, SafeAreaView, StyleSheet, Text, View, DevSettings} from 'react-native';
 import React, {FC, PureComponent, useEffect} from 'react';
 import { Libro } from '../../lib/models/libro';
 import {useAppDispatch, useAppSelector} from '../../redux/app/hooks';
-import { NavigationContainer, StackActions, useNavigation } from '@react-navigation/native';
-import { getLibro, setIdLibro, setResponseGetLibro } from '../../redux/features/LibrosSlice';
-import { setIdLibroDetalle } from '../../redux/features/DetallesSlice';
+import { useNavigation } from '@react-navigation/native';
+import { getLibro, setResponseGetLibro } from '../../redux/features/LibrosSlice';
+import { setIdLibroDelete } from '../../redux/features/UsuariosSlice';
 
 const HomeScreen: FC = () => {
     const librosReducer = useAppSelector(state => state.libro);
@@ -20,26 +20,8 @@ const HomeScreen: FC = () => {
     }, []);
 
     const detalleHandler = async (idLibro: number) => {
-        dispatch(setIdLibroDetalle({idLibro: idLibro}));
-        navigation.navigate('DetallesScreen');
-        /*
-        Alert.alert(
-            'Eliminar',
-            '¿Seguro que deseas eliminar este libro?',
-            [
-              {
-                text: 'Cancelar',
-                onPress: () => console.log('Cancel Pressed'),
-                style: 'cancel',
-              },
-              {
-                text: 'OK',
-                onPress: () => navigation.navigate('DetallesScreen'),
-              },
-            ],
-            {cancelable: false},
-          );
-          */
+        dispatch(setIdLibroDelete({idLibro: idLibro}));
+        navigation.navigate('UsuariosScreen');
         DevSettings.reload();
         console.log('idLibro', idLibro);
     };
@@ -69,7 +51,7 @@ const HomeScreen: FC = () => {
             fechaPublicacion = {item.fechaPublicacion}
             cantidad = {item.cantidad}
             getNavigation={getNavigationRegistro}
-            getNavigationDetalle={getNavigationDetalle}
+            getNavigationUsuario={getNavigationUsuario}
             detalleHandler={detalleHandler}
           />
         );
@@ -79,8 +61,8 @@ const HomeScreen: FC = () => {
         navigation.navigate('RegistrosScreen')
     );
 
-    const getNavigationDetalle = () => (
-        navigation.navigate('DetallesScreen')
+    const getNavigationUsuario = () => (
+        navigation.navigate('UsuariosScreen')
     );
 
     const renderSeparator = () => <FlatListCardSeparator />;
@@ -146,7 +128,7 @@ interface LibroCardProps {
     fechaPublicacion : Date;
     cantidad : number;
     getNavigation: () => void;
-    getNavigationDetalle: () => void;
+    getNavigationUsuario: () => void;
     detalleHandler: (idLibro: number) => void;
 }
 

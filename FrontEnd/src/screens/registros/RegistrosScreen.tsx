@@ -1,6 +1,5 @@
-import {Alert, Button, FlatList, Pressable, SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
-import React, {FC, PureComponent, useEffect, useState} from 'react';
-import { NavigationContainer, StackActions, useNavigation } from '@react-navigation/native';
+import {Alert, Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
+import React, {useState} from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/app/hooks';
 import { postRegistro } from '../../redux/features/RegistrosSlice';
 

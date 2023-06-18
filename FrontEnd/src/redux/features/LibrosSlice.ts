@@ -1,7 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable comma-dangle */
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Libro} from '../../lib/models/libro';
 import {Api, Response} from '../../lib/Api/Api';
