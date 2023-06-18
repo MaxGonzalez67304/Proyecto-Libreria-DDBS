@@ -77,8 +77,10 @@ def addLibro():
         edad = request.json['edad']
         correo = request.json['correo']
         celular = request.json['celular']
+        nombreLibro = request.json['nombreLibro']
+        tiempoRenta = request.json['tiempoRenta']
 
-        objResult = callMethod.fnAddMYSQLList(nombre, apellido, edad, correo, celular)
+        objResult = callMethod.fnAddMYSQLList(nombre, apellido, edad, correo, celular, nombreLibro, tiempoRenta)
 
         return jsonify(objResult)
     except Exception:

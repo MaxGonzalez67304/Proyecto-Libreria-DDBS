@@ -5,4 +5,6 @@ export interface Usuario {
   edad: string,
   correo: string,
   celular: string,
+  nombreLibro: string,
+  tiempoRenta: string
 }

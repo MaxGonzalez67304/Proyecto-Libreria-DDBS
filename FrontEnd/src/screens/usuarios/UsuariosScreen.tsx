@@ -62,6 +62,8 @@ const UsuariosScreen: FC = () => {
         edad={item.edad}
         correo={item.correo}
         celular={item.celular}
+        nombreLibro={item.nombreLibro}
+        tiempoRenta={item.tiempoRenta}
         getNavigation={getNavigationRegistro}
         getNavigationUsuario={getNavigationUsuario}
       />
@@ -120,6 +122,14 @@ class UsuarioCard extends PureComponent<UsuarioCardProps> {
           <Text style={styles.notificationMessage}>
             Teléfono: {this.props.celular}
           </Text>
+
+          <Text style={styles.notificationMessage}>
+            Nombre libro rentado: {this.props.nombreLibro}
+          </Text>
+
+          <Text style={styles.notificationMessage}>
+            Tiempo rentado: {this.props.tiempoRenta}
+          </Text>
         </View>
       </View>
     );
@@ -137,6 +147,8 @@ interface UsuarioCardProps {
   edad: string;
   correo: string;
   celular: string;
+  nombreLibro: string;
+  tiempoRenta: string;
   getNavigation: () => void;
   getNavigationUsuario: () => void;
 }

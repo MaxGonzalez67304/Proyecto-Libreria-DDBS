@@ -15,6 +15,8 @@ const initialState: RegistroSliceInitialState = {
         edad: '',
         correo: '',
         celular: '',
+        nombreLibro: '',
+        tiempoRenta: ''
     },
 
     responsePostRegistro: null,
@@ -42,8 +44,8 @@ const registroSlice = createSlice({
 
 const postRegistro = createAsyncThunk(
     'registroSlice/addUsuario',
-    async (data: { nombre: string, apellido: string, edad: string, correo: string, celular: string }) => {
-        const payload = { nombre: data.nombre, apellido: data.apellido, edad: data.edad, correo: data.correo, celular: data.celular };
+    async (data: { nombre: string, apellido: string, edad: string, correo: string, celular: string, nombreLibro: string, tiempoRenta: string }) => {
+        const payload = { nombre: data.nombre, apellido: data.apellido, edad: data.edad, correo: data.correo, celular: data.celular, nombreLibro: data.nombreLibro, tiempoRenta: data.tiempoRenta };
         const response = await Api.post<Response<Usuario>>(`/addUsuario`, payload);
         return response.data;
     }

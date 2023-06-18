@@ -43,12 +43,12 @@ def fnDeleteMYSQLList(idLibro):
 
     return {'intStatus': 200, 'strAnswer': 'Registro eliminado'}
 
-def fnAddMYSQLList(nombre, apellido, edad, correo, celular):
+def fnAddMYSQLList(nombre, apellido, edad, correo, celular, nombreLibro, tiempoRenta):
     dbConn = getConectionMYSQL()
     cursor = dbConn.cursor()
-    params = (nombre, apellido, edad, correo, celular)
+    params = (nombre, apellido, edad, correo, celular, nombreLibro, tiempoRenta)
 
-    query = '''INSERT INTO usuario(nombre, apellido, edad, correo, celular) VALUES (%s, %s, %s, %s, %s)'''
+    query = '''INSERT INTO usuario(nombre, apellido, edad, correo, celular, nombreLibro, tiempoRenta) VALUES (%s, %s, %s, %s, %s, %s, %s)'''
 
     cursor.execute(query, params)
     dbConn.commit()
