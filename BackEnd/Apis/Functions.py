@@ -1,4 +1,3 @@
-from flask import Flask, jsonify, request, Response
 import pymysql.cursors
 
 import Apis.GlobalInfo.Keys as globalInfo
@@ -8,12 +7,12 @@ versionApp = 1.0
 # Connection for DB
 def getConectionMYSQL():
     return pymysql.connect(
-        host = globalInfo.strDBHost, port = globalInfo.strDBPort,
-        user = globalInfo.strDBUser,
-        password = globalInfo.strDBPassword,
-        db = globalInfo.strDBName,
-        charset = "utf8mb4",
-        cursorclass = pymysql.cursors.DictCursor
+        host=globalInfo.strDBHost, port=globalInfo.strDBPort,
+        user=globalInfo.strDBUser,
+        password=globalInfo.strDBPassword,
+        db=globalInfo.strDBName,
+        charset="utf8mb4",
+        cursorclass=pymysql.cursors.DictCursor
     )
 
 def fnGetTest():
@@ -46,7 +45,8 @@ def fnDeleteMYSQLList(idLibro):
 def fnAddMYSQLList(nombre, apellido, edad, correo, celular, nombreLibro, tiempoRenta):
     dbConn = getConectionMYSQL()
     cursor = dbConn.cursor()
-    params = (nombre, apellido, edad, correo, celular, nombreLibro, tiempoRenta)
+    params = (nombre, apellido, edad, correo,
+              celular, nombreLibro, tiempoRenta)
 
     query = '''INSERT INTO usuario(nombre, apellido, edad, correo, celular, nombreLibro, tiempoRenta) VALUES (%s, %s, %s, %s, %s, %s, %s)'''
 
@@ -67,6 +67,18 @@ def fnGetMYSQLListUsuarios():
 
     return {'intStatus': 200, 'strAnswer': objResult}
 
+def fnGetMYSQLListSucursales():
+    objResult = []
+    dbConn = getConectionMYSQL()
+    cursor = dbConn.cursor()
+
+    query = "SELECT * FROM sucursal"
+
+    cursor.execute(query)
+    objResult = cursor.fetchall()
+
+    return {'intStatus': 200, 'strAnswer': objResult}
+
 def fnUpdateMYSQLList(idLibro, nombre, apellido, edad, correo, celular):
     dbConn = getConectionMYSQL()
     cursor = dbConn.cursor()
@@ -78,5 +90,3 @@ def fnUpdateMYSQLList(idLibro, nombre, apellido, edad, correo, celular):
     dbConn.commit()
 
     return {'intStatus': 200, 'strAnswer': 'Registro actualizado'}
-
-

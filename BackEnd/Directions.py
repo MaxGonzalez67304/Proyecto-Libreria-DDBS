@@ -1,19 +1,13 @@
 # Import libraries
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 
-import os
-import sys
 import Apis.Functions as callMethod
-
-import Apis.GlobalInfo.Keys as PracticaKeys
 
 import Apis.GlobalInfo.Helpers as HelperFunctions
 
 import Apis.GlobalInfo.ResponseMessages as ResponseMessage
 
-from flask import Flask, jsonify, request, url_for, Response
-
-import json
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 CORS(app)
@@ -57,6 +51,18 @@ def fnGetMYSQLListUsuarios():
         HelperFunctions.PrintException()
         return jsonify(ResponseMessage.err500)
 
+# Obtener informacion de la base de datos
+@app.route('/api/general/getSucursales', methods=['GET'])
+def fnGetMYSQLListSucursales():
+    try:
+        objResult = callMethod.fnGetMYSQLListSucursales()
+
+        return jsonify(objResult)
+    except Exception:
+        HelperFunctions.PrintException()
+        return jsonify(ResponseMessage.err500)
+
+
 # Eliminar informacion de la base de datos
 @app.route('/api/general/deleteLibro/<int:idLibro>', methods=['GET'])
 def deleteIdLibro(idLibro):
@@ -80,12 +86,14 @@ def addLibro():
         nombreLibro = request.json['nombreLibro']
         tiempoRenta = request.json['tiempoRenta']
 
-        objResult = callMethod.fnAddMYSQLList(nombre, apellido, edad, correo, celular, nombreLibro, tiempoRenta)
+        objResult = callMethod.fnAddMYSQLList(
+            nombre, apellido, edad, correo, celular, nombreLibro, tiempoRenta)
 
         return jsonify(objResult)
     except Exception:
         HelperFunctions.PrintException()
         return jsonify(ResponseMessage.err500)
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=9005, debug=True, threaded=True)
