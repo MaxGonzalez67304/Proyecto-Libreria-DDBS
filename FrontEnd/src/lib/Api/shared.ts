@@ -1,7 +1,7 @@
 import {Api, Response} from './Api';
 
 export const obtenerRegistros = () => {
-  return Api.get<Response<{}>>('/buscar');
+  return Api.get<Response<{}>>('/getLibros');
 };
 
 export const deleteLibros = (idLibro: number) => {

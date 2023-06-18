@@ -56,7 +56,7 @@ const LandingScreen: FC = () => {
           name="RegistrosScreen"
           component={RegistrosScreen}
           options={{
-            tabBarLabel: 'Registros',
+            tabBarLabel: 'Registro',
             tabBarIcon: ({color}) => (
               <MaterialCommunityIcons name="star" color={color} size={20} />
             ),

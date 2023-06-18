@@ -97,7 +97,7 @@ class LibroCard extends PureComponent<LibroCardProps> {
             <Text style={styles.notificationMessage}>Nombre: {this.props.nombre}</Text>
             <Text style={styles.notificationMessage}>Tipo: {this.props.tipo}</Text>
             <Text style={styles.notificationMessage}>Autor: {this.props.autor}</Text>
-            <Text style={styles.notificationMessage}>Fecha de publicación: {this.props.fechaPublicacion.toString().split(' ').slice(0, 4).join(' ')}</Text>
+            <Text style={styles.notificationMessage}>Fecha de publicación: {this.props.fechaPublicacion.toString().split(' ').slice(1, 4).join(' ')}</Text>
             <Text style={styles.notificationMessage}>Cantidad: {this.props.cantidad}</Text>
 
             <View style={styles.buttonContainer}>

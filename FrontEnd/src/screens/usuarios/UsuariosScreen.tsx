@@ -2,6 +2,7 @@ import {Button, FlatList, SafeAreaView, StyleSheet, Text, View} from 'react-nati
 import React, {FC, PureComponent, useEffect} from 'react';
 import {
   deleteIdLibro,
+  getUsuarios,
   setResponseGetLibroDetalle,
 } from '../../redux/features/UsuariosSlice';
 import {useAppDispatch, useAppSelector} from '../../redux/app/hooks';
@@ -13,6 +14,7 @@ const UsuariosScreen: FC = () => {
   const navigation = useNavigation<any>();
 
   const fetchInitialHandler = () => {
+    dispatch(getUsuarios());
     dispatch(deleteIdLibro(usuarioReducer.idLibro));
   };
 

@@ -1,9 +1,11 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Libro} from '../../lib/models/libro';
+import {Usuario} from '../../lib/models/usuario';
 import {Api, Response} from '../../lib/Api/Api';
 
 interface UsuariosSliceInitialState {
     detalleLibro: Libro | null;
+    usuario: Usuario[];
     idLibro: number;
 
     responseGetLibroDetalle: number | null;
@@ -11,6 +13,7 @@ interface UsuariosSliceInitialState {
 
 const initialState: UsuariosSliceInitialState = {
     detalleLibro: null,
+    usuario: [],
     idLibro: 0,
 
     responseGetLibroDetalle: null,
@@ -51,6 +54,15 @@ const deleteIdLibro = createAsyncThunk(
     }
 );
 
+const getUsuarios = createAsyncThunk(
+    'usuariosSlice/getUsuarios',
+    async () => {
+        const response = await Api.get<Response<Libro[]>>('/getUsuarios');
+        console.log(response.data);
+        return response.data;
+    }
+);
+
 export const {
     clearLibroDetalleReducer,
     setIdLibroDelete,
@@ -58,7 +70,8 @@ export const {
 } = usuariosSlice.actions;
 
 export {
-    deleteIdLibro
+    deleteIdLibro,
+    getUsuarios
 };
 
 export default usuariosSlice.reducer;

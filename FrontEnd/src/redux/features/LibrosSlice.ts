@@ -4,14 +4,12 @@ import {Api, Response} from '../../lib/Api/Api';
 
 interface LibrosSliceInitialState {
     libro: Libro[];
-    idLibro: string;
 
     responseGetLibro: number | null;
 }
 
 const initialState: LibrosSliceInitialState = {
     libro: [],
-    idLibro: '',
 
     responseGetLibro: null,
 };
@@ -21,10 +19,6 @@ const librosSlice = createSlice({
     initialState,
     reducers: {
         clearLibroReducer: state => initialState,
-        setIdLibro: (state, action: PayloadAction<{ idLibro: string }>) => {
-            const idLibro = action.payload.idLibro;
-            state.idLibro = idLibro;
-        },
         setResponseGetLibro: (state, action: PayloadAction<number | null>) => {
             state.responseGetLibro = action.payload;
         },
@@ -42,9 +36,9 @@ const librosSlice = createSlice({
 });
 
 const getLibro = createAsyncThunk(
-    'librosSlice/buscar',
+    'librosSlice/getLibros',
     async () => {
-        const response = await Api.get<Response<Libro[]>>('/buscar');
+        const response = await Api.get<Response<Libro[]>>('/getLibros');
         console.log(response.data);
         return response.data;
     }
@@ -52,7 +46,6 @@ const getLibro = createAsyncThunk(
 
 export const {
     clearLibroReducer,
-    setIdLibro,
     setResponseGetLibro
 } = librosSlice.actions;
 

@@ -36,10 +36,21 @@ def getTest():
         return jsonify(ResponseMessage.err500)
 
 # Obtener informacion de la base de datos
-@app.route('/api/general/buscar', methods=['GET'])
-def fnGetMYSQLList():
+@app.route('/api/general/getLibros', methods=['GET'])
+def fnGetMYSQLListLibros():
     try:
-        objResult = callMethod.fnGetMYSQLList()
+        objResult = callMethod.fnGetMYSQLListLibros()
+
+        return jsonify(objResult)
+    except Exception:
+        HelperFunctions.PrintException()
+        return jsonify(ResponseMessage.err500)
+
+# Obtener informacion de la base de datos
+@app.route('/api/general/getUsuarios', methods=['GET'])
+def fnGetMYSQLListUsuarios():
+    try:
+        objResult = callMethod.fnGetMYSQLListUsuarios()
 
         return jsonify(objResult)
     except Exception:

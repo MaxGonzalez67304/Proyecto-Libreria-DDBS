@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Registro } from '../../lib/models/registro';
+import { Usuario } from '../../lib/models/usuario';
 import { Api, Response } from '../../lib/Api/Api';
 
 interface RegistroSliceInitialState {
-    registro: Registro;
+    registro: Usuario;
 
     responsePostRegistro: number | null;
 }
@@ -44,7 +44,7 @@ const postRegistro = createAsyncThunk(
     'registroSlice/addUsuario',
     async (data: { nombre: string, apellido: string, edad: string, correo: string, celular: string }) => {
         const payload = { nombre: data.nombre, apellido: data.apellido, edad: data.edad, correo: data.correo, celular: data.celular };
-        const response = await Api.post<Response<Registro>>(`/addUsuario`, payload);
+        const response = await Api.post<Response<Usuario>>(`/addUsuario`, payload);
         return response.data;
     }
 );
