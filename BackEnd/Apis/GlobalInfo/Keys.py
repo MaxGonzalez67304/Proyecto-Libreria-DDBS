@@ -6,11 +6,8 @@
 
 # SQL
 strDBHost = "localhost"
-#strDBHost = ""
 strDBPort = 3306
 strDBUser = "root"
-#strDBUser = ""
 strDBPassword = ""
-#strDBPassword = ""
 strDBName = "proyectofinal"
 strChartset = "utf8mb4"
